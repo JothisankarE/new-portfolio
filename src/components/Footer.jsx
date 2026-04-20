@@ -54,7 +54,7 @@ const Footer = () => {
               jothisankar979@gmail.com
             </a>
             <span className="hidden sm:block text-muted-foreground">•</span>
-            <span className="text-muted-foreground">+919994843216</span>
+            <span className="text-muted-foreground">+919994634216</span>
           </div>
         </div>
 

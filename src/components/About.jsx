@@ -1,4 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 import { GraduationCap, Award, Code, Palette } from "lucide-react";
 
@@ -26,7 +27,7 @@ const About = () => {
                 <div>
                 <h3 className="font-semibold">MCA (Master of Computer Application)</h3>
                 <p className="text-sm text-muted-foreground">Kongu Engineering College, Erode</p>
-                <p className="text-sm text-accent">7.26-CGPA - 2025</p>
+                <p className="text-sm text-accent">7.26-CGPA - 2026</p>
               </div>
               <div>
                 <h3 className="font-semibold">Bachelor of Science in Computer Systems And Design</h3>
@@ -92,13 +93,33 @@ const About = () => {
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-primary">
                 <Award className="h-5 w-5" />
-                Achievements
+                Achievements & Certifications
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="bg-gradient-to-r from-primary/10 to-accent/10 p-4 rounded-lg border border-primary/20">
-                <h3 className="font-semibold text-lg">Infosys Springboard - Certification in Design Patterns in Software</h3>
-                <p className="text-muted-foreground">Completed advanced certification program focusing on software design patterns and best practices.</p>
+              <div className="grid md:grid-cols-2 gap-6">
+                {/* Infosys Certification */}
+                <div className="bg-gradient-to-r from-primary/5 to-accent/5 p-5 rounded-xl border border-primary/10 h-full flex flex-col hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                  <h3 className="font-semibold text-lg text-primary">Infosys Springboard - Certification in Design Patterns in Software</h3>
+                  <p className="text-sm text-muted-foreground mt-3 flex-grow leading-relaxed">Completed advanced certification program focusing on software design patterns and best practices.</p>
+                </div>
+                
+                {/* Databricks Certification */}
+                <div className="bg-gradient-to-r from-accent/5 to-primary/5 p-5 rounded-xl border border-primary/10 h-full flex flex-col hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                  <h3 className="font-semibold text-lg text-primary">Databricks Academy - Generative AI Fundamentals</h3>
+                  <p className="text-sm text-muted-foreground mt-3 flex-grow leading-relaxed">Earners of the badge passed the Fundamentals of the Databricks Generative AI accreditation with a score of 70%.</p>
+                  <div className="mt-5">
+                    <a 
+                      href="https://images.credential.net/embed/iubfhibc_1776703352472.png" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                    >
+                      <Button size="sm" variant="outline" className="glow-hover w-full sm:w-auto text-xs py-2 h-9 rounded-lg border-primary/20 hover:bg-primary/10">
+                        View Certificate Badge
+                      </Button>
+                    </a>
+                  </div>
+                </div>
               </div>
             </CardContent>
           </Card>

@@ -45,23 +45,44 @@ const Hero = () => {
 
       <div className="container mx-auto px-6 text-center relative z-10">
         <div className="fade-in-up">
-          {/* Profile Logo */}
-          <div className="hero-glow rounded-full w-32 h-32 mx-auto mb-8 flex items-center justify-center floating shadow-xl shadow-primary/30">
-            <span className="text-4xl font-bold text-primary">JE</span>
+          {/* Profile Photo */}
+          <div className="relative w-32 h-32 md:w-40 md:h-40 mx-auto mb-6 md:mb-8 group fade-in-up">
+            {/* Animated border glow */}
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary via-accent to-primary opacity-60 blur-lg group-hover:opacity-100 transition-opacity duration-500 animate-pulse"></div>
+            
+            {/* Image Container */}
+            <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-background/80 shadow-2xl z-10 bg-muted/10 flex items-center justify-center floating">
+              {/* Fallback initials if image is not found */}
+              <span className="text-4xl md:text-5xl font-bold text-primary absolute z-0">JE</span>
+              
+              {/* 
+                HOW TO ADD YOUR PHOTO:
+                1. Put your photo file in the 'public' folder (name it: profile.jpg)
+                2. The 'object-top' class ensures your face is centered correctly in this portrait!
+              */}
+              <img 
+                src="/profile.jpg" 
+                alt="Jothisankar E" 
+                className="w-full h-full object-cover object-top relative z-10 transition-transform duration-700 group-hover:scale-110"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                }}
+              />
+            </div>
           </div>
 
           {/* Name */}
-          <h1 className="text-5xl md:text-7xl font-extrabold mb-4 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent drop-shadow-lg">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold mb-4 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(var(--primary),0.2)] tracking-tight">
             JOTHISANKAR E
           </h1>
 
           {/* Typing Effect */}
-          <div className="text-lg md:text-2xl text-muted-foreground mb-4 h-8 font-medium">
-            <span className="typing">{typedText}</span>
+          <div className="text-lg md:text-2xl text-muted-foreground mb-6 h-8 font-medium flex items-center justify-center">
+            <span className="typing border-r-2 border-primary pr-1">{typedText}</span>
           </div>
 
           {/* Tagline */}
-          <p className="text-base md:text-lg text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg text-muted-foreground mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed px-4 sm:px-0">
             Looking for a challenging role in a reputable organization to utilize
             my technical, database, and management skills for organizational
             growth while enhancing my knowledge about new and emerging trends in
@@ -69,7 +90,7 @@ const Hero = () => {
           </p>
 
           {/* Action Buttons */}
-          <div className="flex flex-col items-center justify-center gap-6 mb-8">
+          <div className="flex flex-col items-center justify-center gap-4 sm:gap-6 mb-8 px-4">
             {/* Resume Button */}
             <div className="w-full sm:w-auto">
               <a
@@ -80,7 +101,7 @@ const Hero = () => {
                 
                 <Button
                   size="lg"
-                  className="glow-hover w-full sm:w-auto px-6 py-3 rounded-xl shadow-lg shadow-primary/30 hover:scale-105 transition-transform duration-300">
+                  className="glow-hover w-full sm:w-auto px-6 py-5 sm:py-3 rounded-xl shadow-lg shadow-primary/30 hover:scale-105 transition-transform duration-300 text-sm sm:text-base">
                   
                   <Download className="mr-2 h-5 w-5" />
                   Download Resume
@@ -89,21 +110,21 @@ const Hero = () => {
             </div>
 
             {/* Contact Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full sm:w-auto">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center w-full sm:w-auto">
               <Button
                 variant="outline"
                 size="lg"
-                className="glow-hover w-full sm:w-auto px-6 py-3 rounded-xl shadow-md hover:shadow-primary/40 hover:scale-105 transition-transform duration-300">
+                className="glow-hover w-full sm:w-auto px-4 py-5 sm:py-3 rounded-xl shadow-md hover:shadow-primary/40 hover:scale-105 transition-transform duration-300 text-xs sm:text-sm">
                 
-                <Mail className="mr-2 h-5 w-5" />
+                <Mail className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                 jothisankar979@gmail.com
               </Button>
               <Button
                 variant="outline"
                 size="lg"
-                className="glow-hover w-full sm:w-auto px-6 py-3 rounded-xl shadow-md hover:shadow-primary/40 hover:scale-105 transition-transform duration-300">
+                className="glow-hover w-full sm:w-auto px-4 py-5 sm:py-3 rounded-xl shadow-md hover:shadow-primary/40 hover:scale-105 transition-transform duration-300 text-xs sm:text-sm">
                 
-                <Phone className="mr-2 h-5 w-5" />
+                <Phone className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                 +91 9994634216
               </Button>
             </div>

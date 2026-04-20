@@ -37,11 +37,11 @@ const Experience = () => {
                 </div>
                 <div>
                   <h3>Business Administrator</h3>
-                  <p className="text-lg text-muted-foreground font-normal">E-Commerce Sector</p>
+                  <p className="text-lg text-muted-foreground font-normal"> E-Commerce Sector [Duration August 2023 – January 2024]</p>
                 </div>
               </CardTitle>
             </CardHeader>
-            <CardContent className="p-8">
+            <CardContent className="p-4 sm:p-8">
               <div className="mb-6">
                 <Badge variant="outline" className="bg-accent/10 text-accent border-accent/30">
                   Current Position
@@ -50,9 +50,11 @@ const Experience = () => {
               
               <div className="grid md:grid-cols-3 gap-6">
                 {responsibilities.map((item, index) =>
-                <div key={index} className="space-y-3 p-4 rounded-lg bg-gradient-to-br from-primary/5 to-accent/5 border border-primary/10">
-                    <div className="flex items-center gap-2 text-primary">
-                      {item.icon}
+                <div key={index} className="space-y-3 p-5 rounded-xl bg-gradient-to-br from-primary/5 to-accent/5 border border-primary/10 hover:border-primary/30 transition-all duration-300 hover:shadow-md group">
+                    <div className="flex items-center gap-3 text-primary group-hover:scale-105 transition-transform">
+                      <div className="p-2 bg-primary/10 rounded-lg">
+                        {item.icon}
+                      </div>
                       <h4 className="font-semibold">{item.title}</h4>
                     </div>
                     <p className="text-sm text-muted-foreground leading-relaxed">
