@@ -24,8 +24,8 @@ const Footer = () => {
 
 
   return (
-    <footer id="contact" className="py-12 border-t border-primary/20 bg-card/30 backdrop-blur-sm">
-      <div className="container mx-auto px-6">
+    <footer id="contact" className="section-padding border-t border-primary/20 bg-card/30 backdrop-blur-sm">
+      <div className="container-responsive">
         {/* Social Links */}
         <div className="flex justify-center gap-4 mb-8">
           {socialLinks.map((link, index) =>

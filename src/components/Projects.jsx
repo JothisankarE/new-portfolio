@@ -47,12 +47,12 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-20">
-      <div className="container mx-auto px-6">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 fade-in-up">
-          My Projects
+    <section id="projects" className="section-padding">
+      <div className="container-responsive">
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 sm:mb-20 fade-in-up">
+          Featured Projects
         </h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {projects.map((project, index) => (
             <Card key={index} className="card-hover bg-card/50 backdrop-blur-sm border-primary/20 overflow-hidden group flex flex-col h-full">
               <CardHeader className="bg-gradient-to-r from-primary/10 to-accent/10">

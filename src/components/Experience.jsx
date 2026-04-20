@@ -22,9 +22,9 @@ const Experience = () => {
 
 
   return (
-    <section className="py-20 section-bg">
-      <div className="container mx-auto px-6">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 fade-in-up">
+    <section className="section-padding section-bg">
+      <div className="container-responsive">
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 sm:mb-20 fade-in-up">
           Work Experience
         </h2>
         

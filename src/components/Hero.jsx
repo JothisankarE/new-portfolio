@@ -43,7 +43,7 @@ const Hero = () => {
         )}
       </div>
 
-      <div className="container mx-auto px-6 text-center relative z-10">
+      <div className="container-responsive text-center relative z-10 pt-20 sm:pt-0">
         <div className="fade-in-up">
           {/* Profile Photo */}
           <div className="relative w-32 h-32 md:w-40 md:h-40 mx-auto mb-6 md:mb-8 group fade-in-up">
@@ -52,18 +52,16 @@ const Hero = () => {
             
             {/* Image Container */}
             <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-background/80 shadow-2xl z-10 bg-muted/10 flex items-center justify-center floating">
-              {/* Fallback initials if image is not found */}
+              {/* Fallback initials */}
               <span className="text-4xl md:text-5xl font-bold text-primary absolute z-0">JE</span>
               
-              {/* 
-                HOW TO ADD YOUR PHOTO:
-                1. Put your photo file in the 'public' folder (name it: profile.jpg)
-                2. The 'object-top' class ensures your face is centered correctly in this portrait!
-              */}
               <img 
                 src="/profile.jpg" 
                 alt="Jothisankar E" 
-                className="w-full h-full object-cover object-top relative z-10 transition-transform duration-700 group-hover:scale-110"
+                className={`w-full h-full object-cover object-top relative z-10 transition-all duration-700 group-hover:scale-110 ${typedText ? 'opacity-100' : 'opacity-0'}`}
+                onLoad={(e) => {
+                  e.currentTarget.classList.add('opacity-100');
+                }}
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
                 }}

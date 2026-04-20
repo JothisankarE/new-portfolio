@@ -4,17 +4,17 @@ import { Button } from "@/components/ui/button";
 import { GraduationCap, Award, Code, Palette } from "lucide-react";
 
 const About = () => {
-  const skills = ["HTML", "CSS", "Java", "Figma"];
+  const skills = ["HTML", "CSS", "React.js", "PHP", "Java", "Figma"];
   const interests = ["UI/UX Design (Figma)", "Web Development", "E-Commerce Solutions"];
 
   return (
-    <section id="about" className="py-20 section-bg">
-      <div className="container mx-auto px-6">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 fade-in-up">
+    <section id="about" className="section-padding section-bg">
+      <div className="container-responsive">
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 sm:mb-20 fade-in-up">
           About Me
         </h2>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {/* Education */}
           <Card className="card-hover bg-card/50 backdrop-blur-sm border-primary/20">
             <CardHeader>
