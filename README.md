@@ -1,52 +1,53 @@
-# Welcome to your Lovable project
+PORTFOLIO  
+Personal Portfolio Website showcasing my projects, skills, and experience. Built with modern web technologies to create a responsive and user-friendly interface.
+🚀 Tech Stack
+Frontend: HTML, CSS, JavaScript, React.js
+Backend : Node.js, Express.js
+Database : MongoDB
+Version Control: Git & GitHub
+⚙️ Features
+Responsive Design (Desktop)
+Projects Showcase Section
+Skills & About Me Section
+Contact Form / Contact Details
+Clean and Modern UI
+🛠️ Installation & Setup
 
-**Use your preferred IDE**
+# Clone the repository
+git clone https://github.com/your-username/your-repo-name.git
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+# Navigate to project folder
+cd your-repo-name
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+# Install dependencies (if using React/Node)
+npm install
 
-Follow these steps:
+# Run the project
+npm start
+🔧 Git Commands Used
+# Initialize repository
+git init
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# Add files to staging
+git add .
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Commit changes
+git commit -m "Initial commit"
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Create main branch
+git branch -M main
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+# Connect to GitHub repository
+git remote add origin https://github.com/your-username/your-repo-name.git
 
-**Edit a file directly in GitHub**
+# Push code to GitHub
+git push -u origin main
+🌐 Deployment
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+This project can be deployed using platforms like:
+Netlify
+Vercel
+GitHub Pages
 
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+📬 Contact
+Feel free to connect with me for collaboration or opportunities.
