@@ -1,13 +1,17 @@
 import { Button } from "@/components/ui/button";
 import { Download, Mail, Phone } from "lucide-react";
 import { useEffect, useState } from "react";
+import { usePortfolio } from "../context/PortfolioContext";
 
 const Hero = () => {
+  const { data } = usePortfolio();
+  const { hero } = data;
   const [typedText, setTypedText] = useState("");
-  const fullText = "Full Stack Developer & UI/UX Enthusiast";
+  const fullText = hero.role;
 
   useEffect(() => {
     let index = 0;
+    setTypedText(""); // Reset typed text when hero.role changes
     const timer = setInterval(() => {
       if (index < fullText.length) {
         setTypedText(fullText.slice(0, index + 1));
@@ -18,7 +22,7 @@ const Hero = () => {
     }, 100);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [hero.role]);
 
   return (
     <section
@@ -53,11 +57,13 @@ const Hero = () => {
             {/* Image Container */}
             <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-background/80 shadow-2xl z-10 bg-muted/10 flex items-center justify-center floating">
               {/* Fallback initials */}
-              <span className="text-4xl md:text-5xl font-bold text-primary absolute z-0">JE</span>
+              <span className="text-4xl md:text-5xl font-bold text-primary absolute z-0">
+                {hero.name.split(' ').map(n => n[0]).join('')}
+              </span>
               
               <img 
-                src="/profile.jpg" 
-                alt="Jothisankar E" 
+                src={hero.profileImage} 
+                alt={hero.name} 
                 className={`w-full h-full object-cover object-top relative z-10 transition-all duration-700 group-hover:scale-110 ${typedText ? 'opacity-100' : 'opacity-0'}`}
                 onLoad={(e) => {
                   e.currentTarget.classList.add('opacity-100');
@@ -70,8 +76,8 @@ const Hero = () => {
           </div>
 
           {/* Name */}
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold mb-4 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(var(--primary),0.2)] tracking-tight">
-            JOTHISANKAR E
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold mb-4 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(var(--primary),0.2)] tracking-tight uppercase">
+            {hero.name}
           </h1>
 
           {/* Typing Effect */}
@@ -81,10 +87,7 @@ const Hero = () => {
 
           {/* Tagline */}
           <p className="text-sm sm:text-base md:text-lg text-muted-foreground mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed px-4 sm:px-0">
-            Looking for a challenging role in a reputable organization to utilize
-            my technical, database, and management skills for organizational
-            growth while enhancing my knowledge about new and emerging trends in
-            the IT sector.
+            {hero.tagline}
           </p>
 
           {/* Action Buttons */}
@@ -92,7 +95,7 @@ const Hero = () => {
             {/* Resume Button */}
             <div className="w-full sm:w-auto">
               <a
-                href="https://drive.google.com/file/d/1lnEd-6ugmCHfoeGdDGAtlvDl3aswi4HN/view?usp=drive_link"
+                href={hero.resumeLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block">
@@ -109,28 +112,32 @@ const Hero = () => {
 
             {/* Contact Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center w-full sm:w-auto">
-              <Button
-                variant="outline"
-                size="lg"
-                className="glow-hover w-full sm:w-auto px-4 py-5 sm:py-3 rounded-xl shadow-md hover:shadow-primary/40 hover:scale-105 transition-transform duration-300 text-xs sm:text-sm">
-                
-                <Mail className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-                jothisankar979@gmail.com
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="glow-hover w-full sm:w-auto px-4 py-5 sm:py-3 rounded-xl shadow-md hover:shadow-primary/40 hover:scale-105 transition-transform duration-300 text-xs sm:text-sm">
-                
-                <Phone className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-                +91 9994634216
-              </Button>
+              <a href={`mailto:${hero.email}`} className="w-full sm:w-auto">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="glow-hover w-full sm:w-auto px-4 py-5 sm:py-3 rounded-xl shadow-md hover:shadow-primary/40 hover:scale-105 transition-transform duration-300 text-xs sm:text-sm">
+                  
+                  <Mail className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
+                  {hero.email}
+                </Button>
+              </a>
+              <a href={`tel:${hero.phone}`} className="w-full sm:w-auto">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="glow-hover w-full sm:w-auto px-4 py-5 sm:py-3 rounded-xl shadow-md hover:shadow-primary/40 hover:scale-105 transition-transform duration-300 text-xs sm:text-sm">
+                  
+                  <Phone className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
+                  {hero.phone}
+                </Button>
+              </a>
             </div>
           </div>
         </div>
       </div>
-    </section>);
-
+    </section>
+  );
 };
 
 export default Hero;

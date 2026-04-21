@@ -1,11 +1,11 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-
 import { GraduationCap, Award, Code, Palette } from "lucide-react";
+import { usePortfolio } from "../context/PortfolioContext";
 
 const About = () => {
-  const skills = ["HTML", "CSS", "React.js", "PHP", "Java", "Figma"];
-  const interests = ["UI/UX Design (Figma)", "Web Development", "E-Commerce Solutions"];
+  const { data } = usePortfolio();
+  const { about } = data;
 
   return (
     <section id="about" className="section-padding section-bg">
@@ -24,50 +24,38 @@ const About = () => {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-                <div>
-                <h3 className="font-semibold">MCA (Master of Computer Application)</h3>
-                <p className="text-sm text-muted-foreground">Kongu Engineering College, Erode</p>
-                <p className="text-sm text-accent">7.26-CGPA - 2026</p>
-              </div>
-              <div>
-                <h3 className="font-semibold">Bachelor of Science in Computer Systems And Design</h3>
-                <p className="text-sm text-muted-foreground">Kongu Engineering College, Erode</p>
-                <p className="text-sm text-accent">72% - 2023</p>
-              </div>
-              <div>
-                <h3 className="font-semibold">HSC - Bharathi Matriculation Higher Secondary School</h3>
-                <p className="text-sm text-muted-foreground">Vijayamangalam, Erode</p>
-                <p className="text-sm text-accent">68.83% - 2020</p>
-              </div>
-              <div>
-                <h3 className="font-semibold">SSLC - Bharathi Matriculation Higher Secondary School</h3>
-                <p className="text-sm text-muted-foreground">Vijayamangalam, Erode</p>
-                <p className="text-sm text-accent">66.8% - 2018</p>
-              </div>
+              {about.education.map((edu, index) => (
+                <div key={index}>
+                  <h3 className="font-semibold">{edu.degree}</h3>
+                  <p className="text-sm text-muted-foreground">{edu.institution}</p>
+                  <p className="text-sm text-accent">{edu.score}</p>
+                </div>
+              ))}
             </CardContent>
           </Card>
-{/* Skills */}
+
+          {/* Skills */}
           <Card className="card-hover bg-card/50 backdrop-blur-sm border-primary/20">
-  <CardHeader>
-    <CardTitle className="flex items-center gap-2 text-primary">
-      <Code className="h-5 w-5" />
-      Technical Skills
-    </CardTitle>
-  </CardHeader>
-  <CardContent>
-    <ul className="space-y-3">
-      {skills.map((skill, index) =>
-                <li
-                  key={index}
-                  className="flex items-center gap-3 p-3 rounded-lg border border-primary/20 bg-primary/5 hover:bg-primary/10 transition-colors shadow-sm">
-                  
-          <div className="w-2.5 h-2.5 bg-green-500 rounded-full"></div>
-          <span className="font-medium">{skill}</span>
-        </li>
-                )}
-    </ul>
-  </CardContent>
-</Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-primary">
+                <Code className="h-5 w-5" />
+                Technical Skills
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ul className="space-y-3">
+                {about.skills.map((skill, index) => (
+                  <li
+                    key={index}
+                    className="flex items-center gap-3 p-3 rounded-lg border border-primary/20 bg-primary/5 hover:bg-primary/10 transition-colors shadow-sm">
+                    <div className="w-2.5 h-2.5 bg-green-500 rounded-full"></div>
+                    <span className="font-medium">{skill}</span>
+                  </li>
+                ))}
+              </ul>
+            </CardContent>
+          </Card>
+
           {/* Areas of Interest */}
           <Card className="card-hover bg-card/50 backdrop-blur-sm border-primary/20">
             <CardHeader>
@@ -78,12 +66,12 @@ const About = () => {
             </CardHeader>
             <CardContent>
               <ul className="space-y-2">
-                {interests.map((interest, index) =>
-                <li key={index} className="flex items-center gap-2">
+                {about.interests.map((interest, index) => (
+                  <li key={index} className="flex items-center gap-2">
                     <div className="w-2 h-2 bg-accent rounded-full"></div>
                     <span>{interest}</span>
                   </li>
-                )}
+                ))}
               </ul>
             </CardContent>
           </Card>
@@ -98,35 +86,32 @@ const About = () => {
             </CardHeader>
             <CardContent>
               <div className="grid md:grid-cols-2 gap-6">
-                {/* Infosys Certification */}
-                <div className="bg-gradient-to-r from-primary/5 to-accent/5 p-5 rounded-xl border border-primary/10 h-full flex flex-col hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                  <h3 className="font-semibold text-lg text-primary">Infosys Springboard - Certification in Design Patterns in Software</h3>
-                  <p className="text-sm text-muted-foreground mt-3 flex-grow leading-relaxed">Completed advanced certification program focusing on software design patterns and best practices.</p>
-                </div>
-                
-                {/* Databricks Certification */}
-                <div className="bg-gradient-to-r from-accent/5 to-primary/5 p-5 rounded-xl border border-primary/10 h-full flex flex-col hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                  <h3 className="font-semibold text-lg text-primary">Databricks Academy - Generative AI Fundamentals</h3>
-                  <p className="text-sm text-muted-foreground mt-3 flex-grow leading-relaxed">Earners of the badge passed the Fundamentals of the Databricks Generative AI accreditation with a score of 70%.</p>
-                  <div className="mt-5">
-                    <a 
-                      href="https://images.credential.net/embed/iubfhibc_1776703352472.png" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                    >
-                      <Button size="sm" variant="outline" className="glow-hover w-full sm:w-auto text-xs py-2 h-9 rounded-lg border-primary/20 hover:bg-primary/10">
-                        View Certificate Badge
-                      </Button>
-                    </a>
+                {about.achievements.map((achievement, index) => (
+                  <div key={index} className="bg-gradient-to-r from-primary/5 to-accent/5 p-5 rounded-xl border border-primary/10 h-full flex flex-col hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                    <h3 className="font-semibold text-lg text-primary">{achievement.title}</h3>
+                    <p className="text-sm text-muted-foreground mt-3 flex-grow leading-relaxed">{achievement.description}</p>
+                    {achievement.link && (
+                      <div className="mt-5">
+                        <a 
+                          href={achievement.link} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                        >
+                          <Button size="sm" variant="outline" className="glow-hover w-full sm:w-auto text-xs py-2 h-9 rounded-lg border-primary/20 hover:bg-primary/10">
+                            View Certificate Badge
+                          </Button>
+                        </a>
+                      </div>
+                    )}
                   </div>
-                </div>
+                ))}
               </div>
             </CardContent>
           </Card>
         </div>
       </div>
-    </section>);
-
+    </section>
+  );
 };
 
 export default About;
