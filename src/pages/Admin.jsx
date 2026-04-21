@@ -12,9 +12,11 @@ import {
   Briefcase, 
   FolderRoot, 
   Settings, 
+  LogOut, 
   Save, 
+  Eye, 
+  Activity,
   ExternalLink,
-  GraduationCap,
   Sparkles
 } from "lucide-react";
 import { Link } from 'react-router-dom';
@@ -69,7 +71,7 @@ const Admin = () => {
                 />
               </div>
               <Button type="submit" className="w-full h-11 text-lg glow-hover">
-                Unlock Dashboard
+                open My Dashboard
               </Button>
               <p className="text-center text-xs text-muted-foreground pt-2">
                 Hint: Use <code className="bg-muted px-1 rounded">00000</code> for this demo.
@@ -201,34 +203,39 @@ const Admin = () => {
 
       <div className="container pt-8">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="flex flex-col md:flex-row gap-8">
-          <TabsList className="flex flex-row md:flex-col h-auto bg-transparent border-b md:border-b-0 md:border-r rounded-none p-0 items-start justify-start gap-1 min-w-[200px]">
-            <TabsTrigger value="dashboard" className="w-full justify-start py-3 px-4 data-[state=active]:bg-primary/10 data-[state=active]:text-primary">
-              <LayoutDashboard className="mr-2 h-4 w-4" />
-              Dashboard
-            </TabsTrigger>
-            <TabsTrigger value="hero" className="w-full justify-start py-3 px-4 data-[state=active]:bg-primary/10 data-[state=active]:text-primary">
-              <User className="mr-2 h-4 w-4" />
-              Hero Section
-            </TabsTrigger>
-            <TabsTrigger value="about" className="w-full justify-start py-3 px-4 data-[state=active]:bg-primary/10 data-[state=active]:text-primary">
-              <GraduationCap className="mr-2 h-4 w-4" />
-              About Me
-            </TabsTrigger>
-            <TabsTrigger value="experience" className="w-full justify-start py-3 px-4 data-[state=active]:bg-primary/10 data-[state=active]:text-primary">
-              <Briefcase className="mr-2 h-4 w-4" />
-              Experience
-            </TabsTrigger>
-            <TabsTrigger value="projects" className="w-full justify-start py-3 px-4 data-[state=active]:bg-primary/10 data-[state=active]:text-primary">
-              <FolderRoot className="mr-2 h-4 w-4" />
-              Projects
-            </TabsTrigger>
-            <TabsTrigger value="settings" className="w-full justify-start py-3 px-4 data-[state=active]:bg-primary/10 data-[state=active]:text-primary mt-auto">
-              <Settings className="mr-2 h-4 w-4" />
-              Settings
-            </TabsTrigger>
-          </TabsList>
+        <TabsList className="flex flex-row md:flex-col h-auto md:h-full bg-slate-950/40 backdrop-blur-xl border-b md:border-b-0 md:border-r border-white/5 p-2 md:p-4 space-x-1 md:space-x-0 md:space-y-2 overflow-x-auto md:overflow-x-visible no-scrollbar sticky top-16 md:top-0 z-40">
+          <TabsTrigger value="dashboard" className="flex-1 md:w-full justify-center md:justify-start gap-3 px-3 md:px-4 py-3 rounded-xl data-[state=active]:bg-primary/10 data-[state=active]:text-primary transition-all duration-300">
+            <LayoutDashboard className="h-4 w-4" /> <span className="hidden md:inline">Dashboard</span>
+          </TabsTrigger>
+          <TabsTrigger value="hero" className="flex-1 md:w-full justify-center md:justify-start gap-3 px-3 md:px-4 py-3 rounded-xl data-[state=active]:bg-primary/10 data-[state=active]:text-primary transition-all duration-300">
+            <User className="h-4 w-4" /> <span className="hidden md:inline">Hero</span>
+          </TabsTrigger>
+          <TabsTrigger value="about" className="flex-1 md:w-full justify-center md:justify-start gap-3 px-3 md:px-4 py-3 rounded-xl data-[state=active]:bg-primary/10 data-[state=active]:text-primary transition-all duration-300">
+            <Sparkles className="h-4 w-4" /> <span className="hidden md:inline">About</span>
+          </TabsTrigger>
+          <TabsTrigger value="experience" className="flex-1 md:w-full justify-center md:justify-start gap-3 px-3 md:px-4 py-3 rounded-xl data-[state=active]:bg-primary/10 data-[state=active]:text-primary transition-all duration-300">
+            <Briefcase className="h-4 w-4" /> <span className="hidden md:inline">Work</span>
+          </TabsTrigger>
+          <TabsTrigger value="projects" className="flex-1 md:w-full justify-center md:justify-start gap-3 px-3 md:px-4 py-3 rounded-xl data-[state=active]:bg-primary/10 data-[state=active]:text-primary transition-all duration-300">
+            <FolderRoot className="h-4 w-4" /> <span className="hidden md:inline">Projects</span>
+          </TabsTrigger>
+          
+          <div className="hidden md:block flex-grow" />
+          
+          <TabsTrigger value="settings" className="flex-1 md:w-full justify-center md:justify-start gap-3 px-3 md:px-4 py-3 rounded-xl data-[state=active]:bg-primary/10 data-[state=active]:text-primary mt-0 md:mt-auto">
+            <Settings className="h-4 w-4" /> <span className="hidden md:inline">Settings</span>
+          </TabsTrigger>
+          
+          <Button variant="ghost" className="flex-1 md:w-full justify-center md:justify-start gap-3 px-3 md:px-4 py-3 rounded-xl text-muted-foreground hover:text-primary transition-all duration-300" asChild>
+            <Link to="/">
+              <LogOut className="h-4 w-4" /> <span className="hidden md:inline">Exit</span>
+            </Link>
+          </Button>
+        </TabsList>
 
-          <div className="flex-grow">
+        {/* Main Content */}
+        <div className="flex-1 h-full overflow-y-auto bg-muted/20 p-8">
+          <div className="max-w-5xl mx-auto space-y-8">
             <TabsContent value="dashboard" className="m-0">
               <Dashboard localData={localData} onTabChange={setActiveTab} />
             </TabsContent>
@@ -266,22 +273,33 @@ const Admin = () => {
             <TabsContent value="projects" className="m-0">
               <ProjectsEditor 
                 projects={localData.projects}
-                addProject={addProject}
-                updateProject={updateProject}
-                removeProject={removeProject}
+                addProject={() => setLocalData(prev => ({
+                  ...prev,
+                  projects: [...prev.projects, { title: "New Project", description: "", tech: [], features: [], icon: "Code", link: "" }]
+                }))}
+                updateProject={(index, field, value) => {
+                  const newProjects = [...localData.projects];
+                  newProjects[index] = { ...newProjects[index], [field]: value };
+                  setLocalData(prev => ({ ...prev, projects: newProjects }));
+                }}
+                removeProject={(index) => setLocalData(prev => ({
+                  ...prev,
+                  projects: prev.projects.filter((_, i) => i !== index)
+                }))}
                 onSave={() => handleSave('projects')}
               />
             </TabsContent>
 
             <TabsContent value="settings" className="m-0">
               <SettingsEditor 
-                footer={localData.footer}
+                localData={localData}
                 setLocalData={setLocalData}
                 handleReset={handleReset}
-                onSave={() => handleSave('footer')}
+                onSave={handleSave}
               />
             </TabsContent>
           </div>
+        </div>
         </Tabs>
       </div>
     </div>

@@ -120,5 +120,21 @@ export const initialData = {
       { name: "Gmail", href: "mailto:jothisankar979@gmail.com", icon: "Mail" }
     ],
     copyright: "© 2026 Jothisankar E – Code. Design.Inspire."
-  }
+  },
+  uiSettings: {
+    theme: "gradient",
+    primaryColor: "#0ea5e9"
+  },
+  leetcode: {
+    username: "JothisankarE",
+    profileUrl: "https://leetcode.com/u/JothisankarE/",
+    solved: 350,
+    easy: 150,
+    medium: 150,
+    hard: 50,
+    rating: 1650,
+    ranking: "Top 5%",
+    streak: 15
+  },
+  motivation: "The only way to do great work is to love what you do."
 };

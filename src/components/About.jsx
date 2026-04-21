@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { GraduationCap, Award, Code, Palette } from "lucide-react";
+import { GraduationCap, Award, Code, Palette, Trophy, Flame, Code2, ExternalLink } from "lucide-react";
 import { usePortfolio } from "../context/PortfolioContext";
 
 const About = () => {
@@ -75,6 +75,80 @@ const About = () => {
               </ul>
             </CardContent>
           </Card>
+
+          {/* LeetCode Activity */}
+          <div className="md:col-span-2 lg:col-span-3">
+            <Card className="card-hover bg-card/50 backdrop-blur-sm border-primary/20 overflow-hidden relative">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/5 rounded-full -mr-16 -mt-16 blur-3xl"></div>
+              <CardHeader className="flex flex-row items-center justify-between border-b border-primary/5 pb-4">
+                <CardTitle className="flex items-center gap-3 text-primary text-2xl font-bold">
+                  <div className="p-2 bg-orange-500/10 rounded-lg">
+                    <Code2 className="h-6 w-6 text-orange-500" />
+                  </div>
+                  LeetCode Profile
+                </CardTitle>
+                <a 
+                  href={data.leetcode?.profileUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary transition-all"
+                >
+                  View Profile 
+                  <ExternalLink className="h-4 w-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </a>
+              </CardHeader>
+              <CardContent className="pt-8">
+                <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 items-center">
+                  <div className="lg:col-span-1 text-center lg:text-left border-b lg:border-b-0 lg:border-r border-primary/5 pb-8 lg:pb-0 lg:pr-8">
+                    <span className="text-sm text-muted-foreground font-semibold uppercase tracking-widest">Total Solved</span>
+                    <p className="text-5xl sm:text-6xl font-black text-primary mt-2">{data.leetcode?.solved || 0}</p>
+                    <p className="text-xs text-muted-foreground mt-2 font-medium">Problems across all levels</p>
+                  </div>
+
+                  <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    <div className="space-y-3 p-4 rounded-2xl bg-primary/5 border border-primary/10 hover:border-green-500/30 transition-colors">
+                      <div className="flex justify-between items-center">
+                        <span className="text-green-500 font-bold tracking-tighter text-sm uppercase">Easy</span>
+                        <span className="text-lg font-bold">{data.leetcode?.easy || 0}</span>
+                      </div>
+                      <div className="h-2 w-full bg-muted rounded-full overflow-hidden">
+                        <div 
+                          className="h-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.4)]" 
+                          style={{ width: `${((data.leetcode?.easy || 0) / (data.leetcode?.solved || 1)) * 100}%` }}
+                        ></div>
+                      </div>
+                    </div>
+
+                    <div className="space-y-3 p-4 rounded-2xl bg-primary/5 border border-primary/10 hover:border-yellow-500/30 transition-colors">
+                      <div className="flex justify-between items-center">
+                        <span className="text-yellow-500 font-bold tracking-tighter text-sm uppercase">Medium</span>
+                        <span className="text-lg font-bold">{data.leetcode?.medium || 0}</span>
+                      </div>
+                      <div className="h-2 w-full bg-muted rounded-full overflow-hidden">
+                        <div 
+                          className="h-full bg-yellow-500 shadow-[0_0_8px_rgba(234,179,8,0.4)]" 
+                          style={{ width: `${((data.leetcode?.medium || 0) / (data.leetcode?.solved || 1)) * 100}%` }}
+                        ></div>
+                      </div>
+                    </div>
+
+                    <div className="space-y-3 p-4 rounded-2xl bg-primary/5 border border-primary/10 hover:border-red-500/30 transition-colors">
+                      <div className="flex justify-between items-center">
+                        <span className="text-red-500 font-bold tracking-tighter text-sm uppercase">Hard</span>
+                        <span className="text-lg font-bold">{data.leetcode?.hard || 0}</span>
+                      </div>
+                      <div className="h-2 w-full bg-muted rounded-full overflow-hidden">
+                        <div 
+                          className="h-full bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.4)]" 
+                          style={{ width: `${((data.leetcode?.hard || 0) / (data.leetcode?.solved || 1)) * 100}%` }}
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
 
           {/* Achievements */}
           <Card className="card-hover bg-card/50 backdrop-blur-sm border-primary/20 md:col-span-2 lg:col-span-3">
