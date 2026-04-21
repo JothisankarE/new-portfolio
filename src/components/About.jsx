@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { GraduationCap, Award, Code, Palette, Trophy, Flame, Code2, ExternalLink } from "lucide-react";
+import { GraduationCap, Award, Code, Palette, Trophy, Flame, Code2, ExternalLink, Check as CheckIcon } from "lucide-react";
 import { usePortfolio } from "../context/PortfolioContext";
 
 const About = () => {
@@ -47,9 +47,11 @@ const About = () => {
                 {about.skills.map((skill, index) => (
                   <li
                     key={index}
-                    className="flex items-center gap-3 p-3 rounded-lg border border-primary/20 bg-primary/5 hover:bg-primary/10 transition-colors shadow-sm">
-                    <div className="w-2.5 h-2.5 bg-green-500 rounded-full"></div>
-                    <span className="font-medium">{skill}</span>
+                    className="flex items-center gap-3 p-3 rounded-2xl border border-primary/10 bg-primary/5 hover:bg-primary/10 hover:border-primary/30 transition-all duration-300 group shadow-sm">
+                    <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 group-hover:from-primary/30 group-hover:to-accent/30 transition-all shadow-inner">
+                      <CheckIcon className="h-4 w-4 text-primary" />
+                    </div>
+                    <span className="font-semibold text-foreground/90">{skill}</span>
                   </li>
                 ))}
               </ul>

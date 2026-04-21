@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Download, Mail, Phone } from "lucide-react";
+import { Download, Mail, Phone, Code as CodeIcon, Database, ShoppingCart, Brain, Layout, Sparkles } from "lucide-react";
 import { useEffect, useState } from "react";
 import { usePortfolio } from "../context/PortfolioContext";
 
@@ -49,15 +49,43 @@ const Hero = () => {
 
       <div className="container-responsive text-center relative z-10 pt-20 sm:pt-0">
         <div className="fade-in-up">
-          {/* Profile Photo */}
+          {/* Profile Photo with Orbiting Icons */}
           <div className="relative w-32 h-32 md:w-40 md:h-40 mx-auto mb-6 md:mb-8 group fade-in-up">
-            {/* Animated border glow */}
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary via-accent to-primary opacity-60 blur-lg group-hover:opacity-100 transition-opacity duration-500 animate-pulse"></div>
+            {/* Outer Soft Glow */}
+            <div className="absolute inset-[-8px] rounded-full bg-primary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-pulse"></div>
             
+            {/* Orbiting Icons Container */}
+            <div className="absolute inset-[-30px] md:inset-[-50px] animate-[spin_25s_linear_infinite] pointer-events-none z-0">
+              {[
+                { Icon: CodeIcon, color: 'text-blue-400' },
+                { Icon: Database, color: 'text-emerald-400' },
+                { Icon: ShoppingCart, color: 'text-amber-400' },
+                { Icon: Brain, color: 'text-purple-400' },
+                { Icon: Layout, color: 'text-pink-400' },
+                { Icon: Sparkles, color: 'text-primary' }
+              ].map((item, i) => (
+                <div 
+                  key={i}
+                  className="absolute left-1/2 top-0 -translate-x-1/2"
+                  style={{ 
+                    height: '50%', 
+                    transformOrigin: 'bottom center',
+                    transform: `rotate(${i * 60}deg)`
+                  }}
+                >
+                  <div className="relative -translate-y-1/2">
+                    <div className="bg-background/90 backdrop-blur-xl w-8 h-8 md:w-9 md:h-9 flex items-center justify-center rounded-full border border-primary/20 shadow-[0_0_15px_rgba(var(--primary),0.1)] animate-[spin_25s_linear_infinite_reverse] hover:scale-110 transition-transform">
+                      <item.Icon className={`h-4 w-4 md:h-4.5 md:w-4.5 ${item.color}`} />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
             {/* Image Container */}
-            <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-background/80 shadow-2xl z-10 bg-muted/10 flex items-center justify-center floating">
+            <div className="relative w-full h-full rounded-full overflow-hidden border-[3px] border-primary/30 shadow-2xl z-10 bg-muted/10 flex items-center justify-center floating-slow">
               {/* Fallback initials */}
-              <span className="text-4xl md:text-5xl font-bold text-primary absolute z-0">
+              <span className="text-4xl md:text-5xl font-bold text-primary absolute z-0 opacity-20">
                 {hero.name.split(' ').map(n => n[0]).join('')}
               </span>
               
